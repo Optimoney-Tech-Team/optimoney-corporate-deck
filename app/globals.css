@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #0b0d14;
+  --color-cream: #f5f3ee;
+  --color-emerald-glow: #34d399;
+}
+
+@theme inline {
+  --font-playfair: var(--font-playfair-display), Georgia, "Times New Roman", serif;
+  --font-work: var(--font-work-sans), Arial, Helvetica, sans-serif;
+  --font-mono: "Courier New", Courier, monospace;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+@layer components {
+  .input {
+    @apply w-full bg-transparent border-b border-ink/10 py-2.5 font-work text-base text-ink placeholder:text-ink/25 outline-none focus:border-emerald-500 transition-colors;
+  }
+}
