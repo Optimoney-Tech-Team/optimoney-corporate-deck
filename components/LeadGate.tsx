@@ -20,6 +20,7 @@ export interface LeadGateProps {
   badges?: string[]; // small pills under the subtitle, e.g. ["TMS-AGNOSTIC", "API-FIRST"]
   documentLabel: string; // used in the card copy, e.g. "Lifting the Diligence Burden"
   fields?: "full" | "basic"; // full = name/title/email/company; basic = name/email only
+  noun?: string; // what the document is called in the CTA, e.g. "Report" or "Deck" (default "Report")
 }
 
 export default function LeadGate(props: LeadGateProps) {
@@ -27,6 +28,7 @@ export default function LeadGate(props: LeadGateProps) {
   const [error, setError] = useState("");
   const [form, setForm] = useState({ name: "", title: "", email: "", company: "" });
   const isBasic = props.fields === "basic";
+  const noun = props.noun || "Report";
 
   const update = (field: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement>) =>
     setForm((f) => ({ ...f, [field]: e.target.value }));
@@ -133,7 +135,7 @@ export default function LeadGate(props: LeadGateProps) {
             </div>
           ) : (
             <>
-              <h2 className="font-playfair text-2xl md:text-3xl font-medium mb-2">Get the Report</h2>
+              <h2 className="font-playfair text-2xl md:text-3xl font-medium mb-2">Get the {noun}</h2>
               <p className="text-sm text-ink/55 leading-relaxed mb-8">
                 Enter your details and we&apos;ll send &ldquo;{props.documentLabel},&rdquo; straight to
                 your inbox.
@@ -195,7 +197,7 @@ export default function LeadGate(props: LeadGateProps) {
                   className="mt-2 w-full bg-ink text-cream py-4 rounded-full font-mono text-xs tracking-[0.18em] uppercase flex items-center justify-center gap-2.5 hover:bg-[#1a1d24] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-ink"
                 >
                   {status === "loading" && <Loader2 size={16} className="animate-spin" />}
-                  Send Me the Report
+                  Send Me the {noun}
                 </button>
               </form>
             </>

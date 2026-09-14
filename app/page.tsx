@@ -16,6 +16,7 @@ export default function Home() {
         { num: "+50%", desc: "improvement in STR filing quality, evidenced before production" },
       ]}
       documentLabel="Optimoney Corporate Overview"
+      noun="Deck"
     />
   );
 }
